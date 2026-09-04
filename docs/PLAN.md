@@ -1,26 +1,24 @@
 # Cities 2027
 
-Working title for a stylized modern city-building game inspired by the readable city systems and regional presence of *SimCity* (2013).
+*Cities 2027* is the working title for a stylized modern city-building game influenced by *SimCity* (2013).
 
-The player represents the city as a whole rather than the literal powers of a mayor. They plan roads, buy and place buildings, provide utilities, manage money and develop specialized industries. The game is aimed at the same broad audience as *SimCity* (2013): interested newcomers should be taught clearly, while city-building fans should still find meaningful tradeoffs.
+The player controls the city as a whole. Player actions include planning roads, buying and placing buildings, providing utilities, managing money and developing specialized industries. The target audience includes new and experienced city-building players. The interface explains each system when it becomes relevant.
 
-The city must be satisfying without another human player. Multiplayer adds presence, inspiration and, after the MVP, opportunities for specialization and cooperation. It is not an admission requirement for the local city game.
+The local city supports solo play. Multiplayer provides city visits in the MVP. Specialization and cooperation may be added later.
 
 ## Product priorities
 
-When features conflict, protect these priorities in order:
+Use this priority order when features conflict:
 
 1. Clear city problem-solving through visible costs, capacities, routes and spatial consequences.
 2. Direct player agency over construction and upgrades.
 3. A readable compact town whose systems can be understood from the map and inspectors.
-4. Regional presence that enriches the city without making an absent player fatal.
+4. Regional features that do not require simultaneous player activity.
 5. A technical foundation that can support later trade and cooperation without replacing the backend.
-
-Creative expression and multiplayer cooperation support the city-management game; they do not replace it.
 
 ## Current MVP
 
-The MVP is an open-ended development build, not a shortened commercial game and not a scenario with an invented ending. The owner may evaluate it in sessions of roughly two to three hours, but the city has no victory condition, Great Work or custom objective.
+The MVP is an open-ended development build. It has no victory condition, Great Work or custom objective.
 
 The local build includes:
 
@@ -30,7 +28,7 @@ The local build includes:
 - exact commuter cars used to calculate a congestion score, without traffic affecting jobs or income yet;
 - one conserved oil chain from deposit to drill, refinery, truck and cargo port export;
 - a research centre that accumulates points as scaffolding for later population-and-research unlocks;
-- local saves, developer diagnostics and an admin tool that can add credits during testing;
+- local saves, developer diagnostics and an admin tool that can add credits during development;
 - private two-city regions whose latest published city snapshots can be explored read-only.
 
 The MVP has no cross-city electricity, workers, goods, money, services or simulation effects. Regional trade rules remain a future design task.
@@ -42,11 +40,11 @@ The MVP has no cross-city electricity, workers, goods, money, services or simula
 3. Make direct construction, occupancy, jobs, electricity, water, money and fire protection understandable locally.
 4. Add deterministic road movement, exact commuter cars and a visible congestion score.
 5. Add the oil production chain, inventories, real delivery trucks and cargo-port export.
-6. Evaluate the local city in two-to-three-hour owner sessions before relying on backend work to create interest.
+6. Validate the integrated local city before starting regional implementation.
 7. Deploy the future-ready regional service, publish immutable city snapshots and enable read-only neighbour visits.
 8. Validate identity, recovery, performance and Windows/macOS builds as the corresponding systems become relevant.
 
-Every step is a gate. Online visiting does not begin merely because the backend can be built, and later trading does not begin merely because the regional data model can support actions.
+Each step is a gate. Online visiting starts after the local gates pass. Trading starts after its gameplay rules are defined.
 
 ## Documents
 

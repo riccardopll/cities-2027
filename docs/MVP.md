@@ -2,16 +2,14 @@
 
 ## Purpose
 
-This MVP is an open-ended development build used to test the local city simulation and read-only regional presence. It is not a miniature commercial release and does not invent a victory condition, Great Work, emergency economy or temporary shortcut merely to appear complete.
+The MVP is an open-ended development build for the local city simulation and read-only regional presence. It has no victory condition, Great Work or emergency economy.
 
-The owner may evaluate the build in sessions of roughly two to three hours. That is an evaluation window, not the expected lifetime of a city.
+The MVP evaluates:
 
-The MVP must answer four questions:
-
-1. Is directly planning and operating a compact town understandable and interesting?
-2. Do exact commuter cars make the road network readable before congestion affects the economy?
-3. Does one fully conserved oil chain create a satisfying production-and-freight loop?
-4. Do read-only neighbour visits create inspiration and regional presence without cross-city simulation?
+- the operation and clarity of direct compact-town planning;
+- road-network readability with exact commuter cars and no economic congestion effects;
+- resource conservation and interaction in one oil production and freight chain; and
+- read-only neighbour visits with no cross-city simulation.
 
 ## Player-facing scope
 
@@ -60,7 +58,7 @@ The MVP must answer four questions:
 - One integer-credit city budget.
 - Construction cost, resident tax, filled-job tax and upkeep for infrastructure and special buildings.
 - A developer-only admin command that adds a chosen number of credits.
-- No player-facing recovery promise. Balance failures are recorded rather than hidden behind the admin command.
+- Player-facing recovery is undefined. The admin command is excluded from balance rules.
 - One staffed and supplied research centre that accumulates research points.
 - No meaningful research purchase in this MVP and no special UI explaining the unfinished system. Points may appear in the ordinary inspector or developer diagnostics.
 
@@ -90,7 +88,7 @@ All quantities, capacities and recipe rates use integers. No input or product ma
 
 The simulation is plain C# and does not store live Unity scene objects. City rules and traffic advance at separate fixed deterministic rates. Presentation interpolates saved simulation state and never decides gameplay.
 
-The regional service is not a disposable MVP shortcut. It establishes the long-term Worker, per-region Durable Object, SQLite action ledger/effect sequence, authentication, leases and immutable R2 snapshot path. The MVP uses that foundation for membership, ownership and snapshot publication; later gameplay actions may extend it without replacing the authority model.
+The regional service includes the Worker, per-region Durable Object, SQLite action ledger and effect sequence, authentication, leases and immutable R2 snapshot path. The MVP uses these components for membership, ownership and snapshot publication. Later gameplay actions extend the same authority model.
 
 A published visit snapshot is not a cloud recovery save and cannot become an editable second authority.
 
@@ -114,7 +112,7 @@ A published visit snapshot is not a cloud recovery save and cannot become an edi
 
 ### Scale and construction gate
 
-- The owner can pan, rotate and zoom; place and move a blueprint; connect it; fund construction; and understand why an invalid plan cannot start from the normal interface feedback.
+- Camera controls, blueprint movement, road connection and funded construction work through the normal interface. An invalid plan reports its blocking condition.
 - At least two meaningfully different layouts can support homes, jobs, utilities and fire protection.
 - Fixed footprints, coastline access and obstacles remain readable from the normal play camera.
 - The 64 by 64 grid and 16-metre cells are either supported by screenshots and notes or revised before content depends on them.
@@ -163,7 +161,6 @@ A published visit snapshot is not a cloud recovery save and cannot become an edi
 ### Performance and delivery gate
 
 - Canonical local and traffic fixtures are checked in with exact coordinates, IDs, camera state, settings and hashes before their budgets block a milestone.
-- Simulation, routing, vehicle presentation, snapshot size and save size are measured before optimization systems are adopted.
 - A macOS development build runs at the first scene gate. A Windows smoke build is due at the local-city gate, and both platforms are checked afterward.
 - Edit Mode tests cover deterministic city rules, traffic, fire, production conservation, saves and migrations.
 - Backend tests cover identity, membership, claims, leases, idempotent publication, snapshot integrity and access control.
@@ -175,11 +172,11 @@ A published visit snapshot is not a cloud recovery save and cannot become an edi
 3. **Local city presentation.** Tools, overlays, inspectors, warnings, research scaffolding and the admin credit command.
 4. **Traffic prototype.** Separate fixed update rate, exact commuter cars, deterministic routing/queues and congestion score.
 5. **Oil chain.** Deposits, facilities, inventories, exact trucks, cargo-port export and conservation tests.
-6. **Local evaluation gate.** Two-to-three-hour owner sessions validate readability and decide which local rules need revision.
+6. **Local integration gate.** Validate the combined local systems and revise their rules before regional implementation.
 7. **Regional foundation.** Authentication, two-city membership, claims, leases, durable future action infrastructure and immutable snapshot publication.
 8. **Neighbour visiting.** Read-only loading, inspection, snapshot status and local failure-state validation.
 
-## Decisions deliberately left for evidence
+## Pending decisions
 
 - Final cell, map and footprint dimensions.
 - Exact costs, taxes, upkeep, capacities, risk rates, construction times and research rates.

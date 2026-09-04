@@ -73,7 +73,7 @@ The local save owns the editable city. The region owns identity, membership, cla
 `-- .github/workflows/
 ```
 
-Do not create elaborate workspace tooling before a real dependency needs it. Keep shared protocol fixtures language-neutral.
+Shared protocol fixtures are language-neutral.
 
 ## Client dependency boundaries
 
@@ -276,7 +276,6 @@ Device-bound anonymous authentication is acceptable for the owner's disposable d
 - Idempotent action result and mismatched-content rejection.
 - Gap-free effects, restart recovery, migrations and deadline alarms.
 - Snapshot authorization, checksum, size, staging, commit and access control.
-- Structured-log redaction.
 
 ### End to end
 
@@ -296,8 +295,6 @@ Record baseline hardware and create hashed canonical fixtures before enforcing f
 - save, load, snapshot projection, compression and upload size;
 - Worker latency, Durable Object time, SQLite operations and R2 operations.
 
-Use Unity's ordinary profiling tools and allocation tracking first. Adopt Burst, Jobs or ECS only for a measured bottleneck with a reproducible before/after fixture.
-
 ## Builds and environments
 
 - Local simulation tests run without Unity scenes.
@@ -305,7 +302,6 @@ Use Unity's ordinary profiling tools and allocation tracking first. Adopt Burst,
 - macOS is sufficient for the scale and kernel spikes.
 - A Windows smoke build is required at the local-city presentation gate.
 - Both platforms run later traffic, oil, save and regional checklists.
-- CI must never contain personal Cloudflare or Unity credentials.
 
 ## Decisions deferred until evidence exists
 

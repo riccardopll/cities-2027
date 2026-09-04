@@ -13,7 +13,7 @@ Numeric balance values remain editable tuning data until the relevant prototype 
 - The map is mostly flat and authored. It contains a regional road entrance, a coastline, oil-deposit cells and a small set of unbuildable obstacles.
 - The grid does not wrap. Coordinates use a documented southwest origin and stable integer cell IDs.
 - A street occupies grid cells and connects north, east, south and west.
-- Buildings occupy fixed rectangular footprints defined in data. The MVP intentionally uses more than one footprint size.
+- Buildings occupy fixed rectangular footprints defined in data. The MVP uses more than one footprint size.
 - Each building footprint has declared road-access edges. The cargo port additionally requires a valid shoreline edge; an oil drill requires a valid deposit overlap.
 - Every created world entity receives a monotonic stable city ID. Deleted IDs are never reused.
 - Residents and jobs are integers stored on buildings and in assignments. They are not persistent citizen biography objects.
@@ -259,5 +259,3 @@ At minimum, maintain:
 1. A local-city fixture large enough to exercise utilities, occupancy, fire coverage and overlays.
 2. A commute fixture with enough exact cars to create queues.
 3. An oil fixture with multiple active drills, refinery cycles, trucks and port exports.
-
-Profile plain simulation, routing, queues, vehicle presentation, save size and snapshot size before adopting Burst, Jobs or ECS.

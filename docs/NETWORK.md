@@ -4,7 +4,7 @@
 
 The MVP network creates private two-city regions and publishes read-only city snapshots that the other owner can explore. It does not exchange electricity, workers, jobs, goods, money, services or simulation effects.
 
-The architecture is deliberately suitable for later regional actions. Future readiness means preserving clean authorities, idempotency and ordered effects; it does not mean inventing trade rules before they are designed.
+The architecture supports later regional actions through defined authorities, idempotency and ordered effects. Trade rules are undefined.
 
 ## Authority model
 
@@ -14,7 +14,7 @@ The architecture is deliberately suitable for later regional actions. Future rea
 - A published snapshot is a read-only view artifact. It is not an editable cloud save and is not a recovery source.
 - The Worker validates identity and requests, then routes region mutations to the correct object.
 
-No second client, snapshot or regional record may edit or merge a city history.
+Only the owning client with a valid lease may edit a city history. Snapshot and regional records are read-only with respect to city simulation state.
 
 ## Deployed architecture
 
@@ -54,7 +54,6 @@ The in-process implementation follows the same authority and idempotency rules. 
 
 - Current development may use device-bound anonymous Unity Authentication for the owner's disposable regions.
 - Lost local credentials may orphan those development cities until recoverable identity and cloud recovery are designed.
-- Authentication disclosure, account recovery and data-deletion flows belong to future public distribution work, not the current MVP.
 - The Worker validates token signature, issuer, audience/project, time claims and player identity.
 - A region is created with a client-generated opaque random region ID and permanent `createActionId`.
 - An invite contains the opaque region ID and a high-entropy single-use secret. The object stores only its hash.
@@ -72,7 +71,7 @@ One authenticated session may edit a city at a time.
 - A different session cannot replace a valid lease.
 - The MVP does not merge copied local saves or support simultaneous devices.
 
-Leases are retained even though visiting is read-only because they establish the single-writer rule required by future regional actions and snapshot publication.
+Leases establish the single-writer rule for snapshot publication and future regional actions.
 
 ## Snapshot publication
 
@@ -132,7 +131,7 @@ Publication revisions increase monotonically. An older local save cannot replace
 5. Validate snapshot schema, simulation rules, content manifest and size limits.
 6. Load visit mode with all edit, save, admin and simulation-advance commands disabled.
 
-The UI always shows snapshot revision and last-published time. If no compatible snapshot exists, it says so rather than displaying a partly loaded city. The owner may be offline; visits read the published artifact, not the owner's computer.
+The UI shows the snapshot revision and last-published time. An incompatible snapshot produces an error and is not loaded. Visits read the published artifact while the owner is offline.
 
 ## Generic future action foundation
 
@@ -175,7 +174,6 @@ The client applies effects without gaps, saves the new effect position, then ack
 - Snapshot uploads have declared compressed and uncompressed size limits and checksum binding.
 - Decompression is streaming or bounded to prevent archive bombs.
 - Region and city authorization is checked on every metadata and blob request.
-- Logs redact tokens, invite secrets, presigned URLs and snapshot contents.
 - Rate limits protect create, join, publish, download and synchronization endpoints.
 - Published cities in the invite-only MVP trust player-authored local simulation values. Public discovery and competitive ranking require a separate anti-cheat and moderation design.
 
@@ -197,7 +195,7 @@ Wall time never advances a city's population, vehicles, production, fire, money 
 - A stale local save cannot silently replace a newer published head.
 - Visiting never advances or mutates the owner city's simulation.
 - Local saves never contain access tokens, invite secrets or storage credentials.
-- The backend stores no invented trade rule merely because its action ledger could represent one.
+- The backend contains no trade actions or trade schemas in the MVP.
 
 ## Explicit MVP exclusions
 
@@ -220,7 +218,6 @@ Wall time never advances a city's population, vehicles, production, fire, money 
 - Schema, rules, content or size incompatibility fails before Unity objects are created.
 - Visitors can inspect an offline owner's latest snapshot but cannot issue edit commands.
 - Fixed-cadence publication coalesces redundant saves and never blocks local saving.
-- Redaction tests prove secrets and snapshot contents do not enter structured logs.
 
 ## Decisions for later evidence
 

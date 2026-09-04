@@ -6,15 +6,13 @@ Use Unity 6.3 LTS with the Universal Render Pipeline for the Windows and macOS c
 
 Unity is responsible for input, cameras, tools, 3D presentation, interpolation, overlays, inspectors, audio and builds. It is not the authority for whether a building operates, a car reaches work or a truck transfers cargo.
 
-## Why Unity
+## Engine selection basis
 
 - Mature desktop tooling and a short path to an interactive grid prototype.
 - C# supports one language across Unity presentation and the testable simulation kernel.
 - URP is suitable for the intended stylized, readable art direction.
 - Editor tooling can visualize road graphs, footprints, coverage, queues and inventories while systems are still placeholders.
-- Burst and the Job System remain available if profiling later identifies a proven hotspot.
-
-The existence of an optimization technology is not a reason to adopt it early.
+- Burst and the Job System remain available for measured simulation bottlenecks.
 
 ## Project direction
 
@@ -22,7 +20,6 @@ The existence of an optimization technology is not a reason to adopt it early.
 
 - Use URP and one controlled stylized material palette.
 - Prefer readability of roads, access edges, building state, vehicle routes and overlays over visual density.
-- Use GPU instancing or batching for repeated presentation only after the ordinary implementation is measured.
 - Separate simulation snapshots from interpolated render transforms.
 - A culled or simplified vehicle remains present in the traffic simulation.
 
@@ -57,8 +54,8 @@ The MVP needs accurate movement before a full vehicle catalogue.
 - Use simple coloured boxes or capsules for commuter cars and oil trucks.
 - Different colours and debug labels may distinguish commute, crude and product trips.
 - Draw routes, destination reservations, queue position, speed and cargo in development overlays.
-- Do not add decorative vehicles unrelated to exact simulated trips.
-- Do not require unique fire engines, police cars, garbage trucks or public transport assets before those systems exist.
+- Every displayed vehicle corresponds to an exact simulated trip.
+- Fire engine, police car, garbage truck and public transport assets are deferred with their systems.
 
 ### Building visuals
 
@@ -69,7 +66,7 @@ Create or import only enough placeholder presentation to distinguish:
 - oil drills, refineries and the cargo port;
 - blueprints, construction sites, inactive buildings and ruins.
 
-Fixed footprints and readable silhouettes matter more than visual variants. Do not build a large asset catalogue before scale, movement and production gates pass.
+Fixed footprints and readable silhouettes have priority over visual variants. Asset catalogue work follows the scale, movement and production gates.
 
 ### Saving and published visits
 
@@ -91,30 +88,24 @@ Assembly definitions enforce the dependency direction. `Simulation` and `Traffic
 
 ## Development practices
 
-- Start each hard system with a small isolated fixture and visible debug state.
 - Keep numeric definitions in editable data assets converted to immutable runtime definitions.
-- Record every imported asset's source and licence.
-- Keep generated files, builds, caches and secrets out of source control.
 - Use structured logs for commands, fixed-step overruns, saves, route failures, cargo reservations and publications.
-- Make debug overlays removable from release builds without removing the underlying diagnostics.
 - Build on macOS first, run the first Windows smoke test at the local-city gate and test both thereafter.
 
 ## Initial asset sources
 
 ### Kenney
 
-Suitable CC0 packs may provide temporary roads, buildings, terrain, UI or nature props. Import only the files needed for the current gate and record the exact pack and licence.
+Suitable CC0 packs may provide temporary roads, buildings, terrain, UI or nature props. Import only the files needed for the current gate.
 
 ### Quaternius
 
-Quaternius CC0 city, vehicle and nature packs may be evaluated after simulation-faithful placeholder traffic works. Their existence must not delay the exact vehicle prototype or cause visible cars that promise unsupported behaviour.
+Quaternius CC0 city, vehicle and nature packs are deferred until placeholder traffic is functional.
 
 ### Asset rules
 
-- Standardize scale, pivot, collision, materials and naming during import.
-- Do not let a placeholder pack define final cell or footprint dimensions.
+- Cell and footprint dimensions are independent of placeholder asset dimensions.
 - Reuse a controlled colour palette and keep state overlays legible.
-- Replace or modify visually important assets before a commercial art pass so the game does not look like an untouched asset collection.
 - Prioritize original roads, utilities, production buildings and specialization landmarks when custom art begins.
 
 ## Questions still to resolve
@@ -125,7 +116,6 @@ Quaternius CC0 city, vehicle and nature packs may be evaluated after simulation-
 - Exact camera limits and whether a later street-level visit mode is valuable.
 - Vehicle presentation density and interpolation after traffic profiling.
 - Final art palette, shoreline treatment and custom-asset workflow.
-- The measured threshold that could justify Burst, Jobs or ECS.
 - Unity build runner and licence setup for continuous integration.
 
 ## References

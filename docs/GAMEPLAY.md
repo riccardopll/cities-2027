@@ -1,10 +1,10 @@
 # Gameplay
 
-## Player fantasy
+## Player role
 
-The player represents a modern city as a whole. They are not limited to the literal legal powers of a mayor: they plan streets, fund and place development, operate infrastructure and guide specialization through one readable city budget.
+The player controls a modern city as a whole. They plan streets, fund and place buildings, operate infrastructure and guide specialization through one city budget.
 
-The central pleasure is solving visible city problems. A player should be able to see why a building is empty, why a road is congested, why water output fell or why an oil delivery stopped, then make a deliberate change and observe the result.
+The main activity is solving city problems. The interface reports why a building is empty, a road is congested, water output has fallen or an oil delivery has stopped. The result of a player action is visible in the affected system.
 
 ## MVP loop
 
@@ -18,7 +18,7 @@ The central pleasure is solving visible city problems. A player should be able t
 8. Build an oil drill, refinery and cargo port; move conserved resources in real trucks and earn money only from delivered exports.
 9. Reinvest in construction and player-triggered upgrades.
 
-The MVP is open-ended. It has no win screen, mandatory objective, Great Work or promise that every badly managed city can recover. During development, an admin tool can add credits so work is not blocked by undecided balance or failure rules.
+The MVP is open-ended. It has no win screen, mandatory objective, Great Work or recovery guarantee. A development admin tool can add credits while balance and failure rules remain undefined.
 
 ## Construction and buildings
 
@@ -40,7 +40,7 @@ The MVP does not use zoning or automatic growable buildings. The player places e
 - **Shops** provide a smaller number of clean jobs and job tax.
 - **Factories** provide more jobs and tax value, but nearby homes pay less tax because of nuisance.
 
-Homes, shops and factories use a few fixed rectangular footprints rather than identical one-cell lots or player-drawn parcels. Larger versions are paid upgrades. An upgrade requires healthy operation over time: road access, electricity, water and high occupancy. Population and research requirements will gate most future buildings and upgrades.
+Homes, shops and factories use a small set of fixed rectangular footprints. Larger versions are paid upgrades. Upgrade requirements include sustained road access, electricity, water and high occupancy. Population and research requirements will gate most future buildings and upgrades.
 
 Occupancy changes gradually. Empty homes attract residents when the town has available local jobs, with a small bootstrap allowance so an empty map can start. Workplaces fill from the active resident workforce. The MVP stores residents and jobs as building totals; it does not simulate persistent household biographies.
 
@@ -87,7 +87,7 @@ Fire is a transparent risk-management system, not a surprise disaster system.
 - Destruction leaves rebuildable ruins and removes the building's active occupants and output.
 - Fire engines are not simulated until the later service-traffic work.
 
-The fire station is a special civic building with upkeep. Its value is reliable protection, not direct income.
+The fire station has upkeep and provides protection. It produces no direct income.
 
 ## Economy
 
@@ -100,7 +100,7 @@ The game uses one integer-credit city budget.
 - Buildings and upgrades cost money only. Goods are not construction ingredients in the MVP.
 - Population and research requirements may gate content, but they do not replace monetary construction costs.
 
-Player-facing tax policy, bankruptcy, loans and recovery are not designed yet. The MVP must not disguise the developer-only add-credits command as a finished recovery mechanic.
+Tax policy, bankruptcy, loans and recovery are undefined. The add-credits command is a development tool and is not a recovery mechanic.
 
 ## Oil specialization
 
@@ -115,23 +115,23 @@ Oil is the MVP's only production chain and is available from the start.
 
 Units are conserved. A facility cannot consume cargo that is still on a road, a truck cannot deliver twice, and destination storage cannot exceed capacity. Oil deposits are finite but should outlast several hours of ordinary development. Remaining reserves and every blocked production reason are visible.
 
-Future production chains may support local special buildings, regional trade and Great Works. Those uses are not reasons to add their rules now.
+Future production chains may support local special buildings, regional trade and Great Works. Those rules are outside the MVP.
 
 ## Research
 
 A supplied and staffed research centre consumes upkeep, electricity and water and accumulates research points over time. The longer-term design uses both population and research requirements to unlock most advanced buildings and upgrades.
 
-The MVP intentionally has no meaningful research goal yet: the oil chain is available immediately. Accumulated points may appear in the ordinary building inspector or developer diagnostics, but there is no special explanation or unlock interface until research has a real use. A research tree should not be designed until at least two meaningful branches can be compared.
+The oil chain is available immediately. Research points may appear in the building inspector or developer diagnostics. The MVP has no research purchases or research unlock interface. A research tree requires at least two defined branches.
 
 ## Regional presence
 
 The commercial game remains solo-complete. In the MVP, a private region contains two independently owned cities. A player may open the latest published version of the neighbour's city using the normal pan, rotate, zoom, overlays and building inspectors, but cannot edit it.
 
-Published cities are for inspiration and a sense of shared presence. The MVP does not rank them and contains no secrets, gifts, chat, shared objectives or cross-city simulation. Snapshots publish after durable saves, on clean exit and at configured batch intervals. Visitors always see when a snapshot was last updated.
+Published cities provide read-only regional context. The MVP does not rank them and contains no secrets, gifts, chat, shared objectives or cross-city simulation. Snapshots publish after durable saves, on clean exit and at configured batch intervals. The interface shows the last snapshot update time.
 
 ## Post-MVP direction
 
-Later work may add avenues, commuter consequences, ordinary freight, service vehicles, public transport, additional utilities and services, education, production branches, tourism and regional cooperation. Cross-city trade, Great Works and multiplayer economics require their own prototypes and evidence and are not predetermined by the backend's ability to store actions.
+Later work may add avenues, commuter consequences, ordinary freight, service vehicles, public transport, additional utilities and services, education, production branches, tourism and regional cooperation. Cross-city trade, Great Works and multiplayer economics require separate designs and prototypes.
 
 Major open product questions remain:
 

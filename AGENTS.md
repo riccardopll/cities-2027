@@ -1,7 +1,9 @@
-The project owner is new to game development. Explain Unity workflows, game-loop architecture, simulation terminology, multiplayer concepts, build pipelines and asset production when they are relevant.
+The owner is new to game development. Explain relevant Unity workflows, game loops, simulation terminology, multiplayer, build pipelines and asset production.
 
-The project owner is the only current tester. External-tester processes, moderated studies, onboarding, disclosure, compliance and release hardening are out of scope unless requested. Use developer diagnostics and admin controls for development-only needs. Implement current gameplay at the minimum complexity required by its defined behaviour. Use stable boundaries, data models and backend foundations that can support planned features without replacement. Exclude throwaway scripts, workarounds, temporary endings and temporary MVP mechanics. A planned system may remain incomplete or unused until its rules are defined.
+The owner is the sole tester. Unless requested, omit external-tester processes, moderated studies, onboarding, disclosure, compliance and release hardening. Use developer diagnostics and admin controls for development-only needs.
 
-The project and all files under `docs/` are work in progress. Mechanics, scope, values, milestones, architecture and decisions are provisional. Update the documents when the owner's decisions change. Existing detail does not make a decision permanent.
+Implement defined gameplay with minimum necessary complexity. Use stable boundaries, data models and backend foundations that support planned features without replacement. No throwaway scripts, workarounds, temporary endings or temporary MVP mechanics. Planned systems may remain incomplete or unused until their rules are defined.
 
-This repository is private and has one contributor. External-contributor guidelines, governance, review processes, issue templates and community processes are out of scope unless requested.
+All project decisions and docs are provisional, regardless of detail. Update docs alongside changes to owner decisions, gameplay, implementation, architecture, tooling or delivery plans. Remove obsolete guidance, keep documents consistent and distinguish implemented behavior from planned work. Documentation is part of completing each change.
+
+This repository is private with one contributor. Unless requested, omit external-contributor guidelines, governance, review processes, issue templates and community processes.
